@@ -1,0 +1,63 @@
+[general]
+pythonfile = ~/.offlineimap.py
+accounts = work
+#accounts = gmail, work
+
+[Account gmail]
+localrepository = gmail-local
+remoterepository = gmail-remote
+status_backend = sqlite
+
+[Account work]
+localrepository = work-local
+remoterepository = work-remote
+status_backend = sqlite
+
+[Repository gmail-local]
+type = IMAP
+preauthtunnel =	/usr/lib/dovecot/imap -o mail_location=maildir:$HOME/Maildir/mbasnight@gmail.com
+nametrans = lambda folder: {'drafts':  '[Gmail]/Drafts',
+                            'sent':    '[Gmail]/Sent Mail',
+                            'flagged': '[Gmail]/Starred',
+                            'trash':   '[Gmail]/Trash',
+                            }.get(folder, folder)
+maxconnections = 3
+holdconnectionopen = yes
+
+[Repository work-local]
+type = IMAP
+preauthtunnel = /usr/lib/dovecot/imap -o mail_location=maildir:$HOME/Maildir/mbasnigh@rackspace.com
+maxconnections = 3
+holdconnectionopen = yes
+
+[Repository gmail-remote]
+type = IMAP
+remotehost = imap.gmail.com
+remoteport = 993
+folderfilter = lambda folder: folder not in ['[Gmail]/Trash',
+                              	             '[Gmail]/Important',
+				             '[Gmail]/Spam',
+					     '[Gmail]/All Mail',
+                                             ]
+nametrans = lambda folder: {'[Gmail]/Drafts':    'drafts',
+                            '[Gmail]/Sent Mail': 'sent',
+                            '[Gmail]/Starred':   'flagged',
+                            '[Gmail]/Trash':     'trash',
+                            }.get(folder, folder)
+ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
+remoteusereval = get_user_emacs("imap.gmail.com", "993")
+remotepasseval = get_password_emacs("imap.gmail.com", "993")
+
+[Repository work-remote]
+type = IMAP
+ssl = yes
+remotehost = rackermail.rackspace.com
+remoteusereval = get_user_emacs("rackermail.rackspace.com", "993")
+remotepasseval  = get_password_emacs("rackermail.rackspace.com", "993")
+remoteport = 993
+keepalive = 60
+folderfilter = lambda folder: folder.lower() not in [
+	          'calendar', 'contacts', 'deleted items', 'drafts',
+		       'archives', 'old staff' '2013' 'journal'] and folder.lower().find("old")
+
