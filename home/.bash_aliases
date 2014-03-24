@@ -1,3 +1,3 @@
-alias emacs="/opt/emacs.24/bin/emacs -nw"
+alias emacs="emacs -nw"
 export EDITOR=emacs
 . "$HOME/.homesick/repos/homeshick/homeshick.sh"

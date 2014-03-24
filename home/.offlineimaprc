@@ -1,7 +1,6 @@
 [general]
 pythonfile = ~/.offlineimap.py
-accounts = work
-#accounts = gmail, work
+accounts = gmail, work
 
 [Account gmail]
 localrepository = gmail-local
