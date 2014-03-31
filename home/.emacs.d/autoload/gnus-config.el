@@ -29,11 +29,11 @@
 	(setq gnus-secondary-select-methods '((nnimap "gmail"
 						      (nnimap-stream shell)
 						      (nnimap-shell-program
-							"USER=mbasnight@gmail.com /usr/lib/dovecot/imap"))
+							"/usr/lib/dovecot/imap -o mail_location=maildir:$HOME/Maildir/mbasnight@gmail.com"))
 					      (nnimap "rackspace"
 						      (nnimap-stream shell)
 						      (nnimap-shell-program
-							"USER=mbasnigh@rackspace.com /usr/lib/dovecot/imap"))
+							"/usr/lib/dovecot/imap -o mail_location=maildir:$HOME/Maildir/mbasnigh@rackspace.com"))
 					      (nntp "news.gmane.org")
 					      (nntp "news.gwene.org")))
 
@@ -91,4 +91,3 @@
 	       (lambda ()
 		  (interactive)
 		   (gnus-summary-delete-article)))))
-
