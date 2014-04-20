@@ -51,6 +51,7 @@ remotepasseval = get_password_emacs("imap.gmail.com", "993")
 [Repository work-remote]
 type = IMAP
 ssl = yes
+sslcacertfile = /etc/ssl/certs/ca-certificates.crt
 remotehost = rackermail.rackspace.com
 remoteusereval = get_user_emacs("rackermail.rackspace.com", "993")
 remotepasseval  = get_password_emacs("rackermail.rackspace.com", "993")

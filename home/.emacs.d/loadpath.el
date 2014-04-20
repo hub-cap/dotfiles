@@ -16,8 +16,8 @@
 
 ;; our bash stuff will configure these things correctly, but can override in elisp if desired
 (unless (boundp 'autoload-dir)
-  (defvar autoload-dir 
-    (or (getenv "EMACS_AUTOLOAD_DIR") 
+  (defvar autoload-dir
+    (or (getenv "EMACS_AUTOLOAD_DIR")
 	(join-dirs  (getenv "HOME") ".emacs.d" "autoload"))))
 
 ;; stolen from prelude
@@ -26,4 +26,7 @@
   (when (file-exists-p autoload-dir)
     (message "Loading personal configuration files in %s..." autoload-dir)
     (mapc 'load (directory-files autoload-dir 't "^[^#].*el$"))))
+(add-to-list 'load-path
+  (join-dirs (getenv "HOME") ".emacs.d" "autoload" "ecb"))
 (load-personal-config)
+;; figure out how to make this not suck
