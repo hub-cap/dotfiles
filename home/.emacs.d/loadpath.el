@@ -28,5 +28,7 @@
     (mapc 'load (directory-files autoload-dir 't "^[^#].*el$"))))
 (add-to-list 'load-path
   (join-dirs (getenv "HOME") ".emacs.d" "autoload" "ecb"))
+(add-to-list 'load-path
+  (join-dirs (getenv "HOME") ".emacs.d" "autoload" "scala-mode2"))
 (load-personal-config)
 ;; figure out how to make this not suck
