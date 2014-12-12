@@ -12,13 +12,7 @@
 	;; using cg-feed-msmtp to set msmtp stuff, using posting-style to set from address
 	(setq gnus-parameters
 	  ;;Use notthere id for all gmane news group postings
-	  '((".*rackspace.*"
-	     (posting-style
-	      (address "mbasnigh@rackspace.com")
-	      (name "Michael Basnight")
-	;      (eval (setq message-sendmail-extra-arguments '("-a" "work")))
-	      (user-mail-address "mbasnigh@rackspace.com")))
-	    (".*gmail.*"
+	  '((".*gmail.*"
 	     (posting-style
 	      (address "mbasnight@gmail.com")
 	      (name "Michael Basnight")
@@ -30,10 +24,6 @@
 						      (nnimap-stream shell)
 						      (nnimap-shell-program
 							"/usr/lib/dovecot/imap -o mail_location=maildir:$HOME/Maildir/mbasnight@gmail.com"))
-					      (nnimap "rackspace"
-						      (nnimap-stream shell)
-						      (nnimap-shell-program
-							"/usr/lib/dovecot/imap -o mail_location=maildir:$HOME/Maildir/mbasnigh@rackspace.com"))
 					      (nntp "news.gmane.org")
 					      (nntp "news.gwene.org")))
 
@@ -49,7 +39,6 @@
 			      (message-fetch-field "from")))
 			      (account
 			       (cond
-				 ((string-match "mbasnigh@rackspace\.com" from) "work")
 				  ((string-match "mbasnight@gmail\.com" from) "gmail"))))
 		    (setq message-sendmail-extra-arguments (list '"-a" account)))))) ; the original form of this script did not have the ' before "a" which causes a very difficult to track bug --frozencemetery
 	(setq message-sendmail-envelope-from 'header)

@@ -1,6 +1,6 @@
 [general]
 pythonfile = ~/.offlineimap.py
-accounts = gmail, work
+accounts = gmail
 
 [Account gmail]
 localrepository = gmail-local
@@ -51,8 +51,12 @@ remotepasseval = get_password_emacs("imap.gmail.com", "993")
 [Repository work-remote]
 type = IMAP
 ssl = yes
+cert_fingerprint = 7e4ecf3de7a4c6cb1f8c42ee44cf62ab459146dc
 sslcacertfile = /etc/ssl/certs/ca-certificates.crt
-remotehost = rackermail.rackspace.com
+#remotehost = rackermail.mentiscoit.us
+remotehost = 162.242.253.211
+#remotehost = rackermail.cannot.name
+#cert_fingerprint = f005c4ec0031119240221b7d447ab373958d23f3
 remoteusereval = get_user_emacs("rackermail.rackspace.com", "993")
 remotepasseval  = get_password_emacs("rackermail.rackspace.com", "993")
 remoteport = 993
@@ -60,4 +64,3 @@ keepalive = 60
 folderfilter = lambda folder: folder.lower() not in [
 	          'calendar', 'contacts', 'deleted items', 'drafts',
 		       'archives', 'old staff' '2013' 'journal'] and folder.lower().find("old")
-

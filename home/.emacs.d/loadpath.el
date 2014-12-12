@@ -30,5 +30,11 @@
   (join-dirs (getenv "HOME") ".emacs.d" "autoload" "ecb"))
 (add-to-list 'load-path
   (join-dirs (getenv "HOME") ".emacs.d" "autoload" "scala-mode2"))
+(add-to-list 'load-path
+  (join-dirs (getenv "HOME") ".emacs.d" "autoload" "ensime" "elisp"))
+(add-to-list 'load-path
+  (join-dirs (getenv "HOME") ".emacs.d" "autoload" "lua-mode"))
+(add-to-list 'load-path
+  (join-dirs (getenv "HOME") ".emacs.d" "autoload" "go-mode"))
 (load-personal-config)
 ;; figure out how to make this not suck
